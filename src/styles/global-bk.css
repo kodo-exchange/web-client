@@ -1,0 +1,174 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  --border: 233 33% 23%;
+  --primary: 234 57% 6%;
+  --ring: 207 24% 59%;
+  /* --input: 214.3 31.8% 91.4%; */
+  --table: 235 56% 15%;
+  --shaded: 235 33% 23%;
+  --highlight: 217 91% 60%;
+  --primary-foreground: 0 0% 100%
+}
+
+.text-primary {
+  color: hsl(var(--primary))
+}
+
+.hover\:text-primary:hover {
+  color: hsl(var(--primary))
+}
+
+.table-text-primary, .table-text-secondary {
+  font-family: Inter,sans-serif;
+  font-size: .75rem;
+  line-height: 1rem;
+  --tw-text-opacity: 1;
+}
+
+.table-text-primary {
+  color: rgb(255 255 255/var(--tw-text-opacity));
+}
+
+.table-text-secondary {
+  color: rgb(126 153 176/var(--tw-text-opacity));
+}
+
+.border-buttonSecondary {
+  /* --tw-border-opacity: 1; */
+  border-color: rgb(10 211 215/var(--tw-border-opacity));
+}
+
+
+.text-buttonSecondary {
+  --tw-text-opacity: 1;
+  color: rgb(10 211 215/var(--tw-text-opacity));
+}
+
+.hover\:border-buttonSecondaryHover:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(6 211 215/var(--tw-border-opacity));
+}
+
+.sm\:divide-y>:not([hidden])~:not([hidden]) {
+  --tw-divide-y-reverse: 0;
+  border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+  border-bottom-width: calc(1px * var(--tw-divide-y-reverse))
+}
+
+.sm\:divide-tableDivider>:not([hidden])~:not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-color: rgb(33 40 75/var(--tw-divide-opacity))
+}
+
+.bg-table {
+  background-color: hsl(var(--table))
+}
+
+
+.bg-tableBackground {
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 20 58/var(--tw-bg-opacity))
+}
+
+.border-tableBorder {
+  --tw-border-opacity: 1;
+  border-color: rgb(28 36 75/var(--tw-border-opacity))
+}
+
+.fill-tableSortIcon{fill:#7e99b0}
+
+.disabled\:bg-shade3:disabled{--tw-bg-opacity:1;background-color:rgb(29 30 53/var(--tw-bg-opacity))}
+
+.bg-gradient {
+  background: linear-gradient(266.44deg, #28edec, #0564d7);
+}
+
+.ring-offset-background {
+  --tw-ring-offset-color: #01021a;
+}
+
+
+.ring-offset-background {
+  --tw-ring-offset-color: #01021a
+}
+
+
+
+
+
+.bg-primary-foreground {
+  background-color: hsl(var(--primary-foreground))
+}
+
+.hover\:bg-primary-foreground\/80:hover {
+  background-color: hsl(var(--primary-foreground)/.8)
+}
+
+
+.bg-background {
+  --tw-bg-opacity: 1;
+  background-color: rgb(1 2 26/var(--tw-bg-opacity))
+}
+
+.bg-background\/80 {
+  background-color: rgba(1,2,26,.8)
+}
+
+
+
+.bg-border {
+  background-color: hsl(var(--border));
+}
+
+.bg-shaded {
+  background-color: hsl(var(--shaded));
+}
+
+.hover\:bg-highlight:hover {
+  background-color: hsl(var(--highlight));
+}
+
+.text-highlight {
+  color: hsl(var(--highlight));
+}
+
+h3 {
+  font-size: 1.125rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: Inter,sans-serif;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+  line-height: normal!important;
+  font-family: Etna,sans-serif!important;
+  font-weight: 600!important;
+}
+
+/* input[type='date']::-webkit-calendar-picker-indicator {
+  color: rgba(128, 128, 128, 0);
+  background: url('/calendar.svg') no-repeat;
+  background-size: contain;
+  opacity: 1;
+  display: block;
+  border-width: thin;
+  position: absolute;
+  left: -115px;
+  z-index: 9;
+} */
+
+button {
+  text-transform: none !important;
+}
