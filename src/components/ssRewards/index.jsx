@@ -121,7 +121,6 @@ export default function Rewards() {
     stores.dispatcher.dispatch({ type: ACTIONS.CLAIM_ALL_REWARDS, content: { pairs: rewards, tokenID: sendTokenID } })
   }
 
-
   // // このコードは、tokenID を更新し、rewardBalances を再取得するために使用されます。
   // const handleChange = (event) => {
   //   setToken(event.target.value)
