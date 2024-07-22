@@ -14,7 +14,8 @@ module.exports = {
       },
       colors: {
         'black-50': 'rgba(0, 0, 0, 0.5)',
-        'blue-gray': { // ここで削除できます
+        'blue-gray': {
+          // ここで削除できます
           50: '#F8FAFC',
           100: '#F1F5F9',
           200: '#E2E8F0',
