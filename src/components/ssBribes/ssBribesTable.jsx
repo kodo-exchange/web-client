@@ -17,7 +17,7 @@ import {
 import { useRouter } from 'next/router'
 import FilterListIcon from '@material-ui/icons/FilterList'
 import SearchIcon from '@material-ui/icons/Search'
-import { formatCurrency, formatAddress } from '../../utils'
+import { formatCurrency, formatAddress, formatTokenBalance } from '../../utils'
 import BigNumber from 'bignumber.js'
 import Image from 'next/image'
 import { ETHERSCAN_URL, CONTRACTS } from '../../stores/constants'
@@ -600,7 +600,7 @@ export default function EnhancedTable({ gauges }) {
                             key={idx}
                             className="flex flex-row gap-[4px] items-center justify-end text-white text-sm leading-[18px] font-medium"
                           >
-                            <div className="">{formatCurrency(bribe.rewardAmount)}</div>
+                            <div className="">{formatTokenBalance(bribe.token.symbol, bribe.rewardAmount)}</div>
                             <div className="">{bribe.token.symbol}</div>
                             <img
                               className="aspect-square rounded-full"

@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Typography } from '@material-ui/core'
 import BigNumber from 'bignumber.js'
-import { formatCurrency } from '../../utils'
+import { formatCurrency, formatTokenBalance } from '../../utils'
 import classes from './ssBribeCreate.module.css'
 
 import stores from '../../stores'
@@ -185,7 +185,9 @@ export default function BribeCreate() {
             <span className="text-text-gray">Bribe token</span>
           </div>
           <span className="text-text-gray">
-            {`Wallet: ${assetValue?.balance ? formatCurrency(assetValue.balance) : formatCurrency(0)}`}
+            {`Wallet: ${
+              assetValue?.balance ? formatTokenBalance(assetValue.symbol, assetValue.balance) : formatCurrency(0)
+            }`}
           </span>
         </div>
         <div className="overflow-hidden rounded-[10px] bg-table-dark border border-border pr-4 focus-within:border-pink-primary hover:border-pink-primary transition-colors duration-300">

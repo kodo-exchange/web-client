@@ -5,7 +5,7 @@ import React from 'react'
 // import { useRouter } from 'next/router'
 import BigNumber from 'bignumber.js'
 
-import { formatCurrency } from '../../utils'
+import { formatCurrency, formatTokenBalance } from '../../utils'
 import stores from '../../stores'
 import { ACTIONS } from '../../stores/constants'
 // import Image from 'next/image'
@@ -380,7 +380,11 @@ export default function EnhancedTable({ rewards, tokenID }) {
                       <div className="flex flex-col gap-1">
                         <div className="flex flex-row gap-1 justify-end items-center text-white text-sm leading-[18px] font-medium">
                           <div className="">
-                            {formatCurrency(BigNumber(row.balance).div(row.totalSupply).times(row.reserve0))}
+                            {/* {formatCurrency(BigNumber(row.balance).div(row.totalSupply).times(row.reserve0))} */}
+                            {formatTokenBalance(
+                              row.token0.symbol,
+                              BigNumber(row.balance).div(row.totalSupply).times(row.reserve0)
+                            )}
                           </div>
                           <div className="">{row.token0.symbol}</div>
                           <img
@@ -397,7 +401,11 @@ export default function EnhancedTable({ rewards, tokenID }) {
                         </div>
                         <div className="flex flex-row gap-1 justify-end items-center text-white text-sm leading-[18px] font-medium">
                           <div className="">
-                            {formatCurrency(BigNumber(row.balance).div(row.totalSupply).times(row.reserve1))}
+                            {/* {formatCurrency(BigNumber(row.balance).div(row.totalSupply).times(row.reserve1))} */}
+                            {formatTokenBalance(
+                              row.token1.symbol,
+                              BigNumber(row.balance).div(row.totalSupply).times(row.reserve1)
+                            )}
                           </div>
                           <div className="">{row.token1.symbol}</div>
                           <img
@@ -418,7 +426,11 @@ export default function EnhancedTable({ rewards, tokenID }) {
                       <div className="flex flex-col gap-1">
                         <div className="flex flex-row gap-1 items-center justify-end text-white text-sm leading-[18px] font-medium">
                           <div className="">
-                            {formatCurrency(
+                            {/* {formatCurrency(
+                              BigNumber(row.gauge.balance).div(row.gauge.totalSupply).times(row.gauge.reserve0)
+                            )} */}
+                            {formatTokenBalance(
+                              row.token0.symbol,
                               BigNumber(row.gauge.balance).div(row.gauge.totalSupply).times(row.gauge.reserve0)
                             )}
                           </div>
@@ -437,7 +449,11 @@ export default function EnhancedTable({ rewards, tokenID }) {
                         </div>
                         <div className="flex flex-row gap-1 items-center justify-end text-white text-sm leading-[18px] font-medium">
                           <div className="">
-                            {formatCurrency(
+                            {/* {formatCurrency(
+                              BigNumber(row.gauge.balance).div(row.gauge.totalSupply).times(row.gauge.reserve1)
+                            )} */}
+                            {formatTokenBalance(
+                              row.token1.symbol,
                               BigNumber(row.gauge.balance).div(row.gauge.totalSupply).times(row.gauge.reserve1)
                             )}
                           </div>
@@ -490,7 +506,7 @@ export default function EnhancedTable({ rewards, tokenID }) {
                       {row && row.rewardType === 'Fees' && (
                         <div className="flex flex-col gap-1">
                           <div className="flex flex-row gap-[4px] items-center justify-end text-white text-sm leading-[18px] font-medium">
-                            <div className="">{formatCurrency(row.claimable0)}</div>
+                            <div className="">{formatTokenBalance(row.token0?.symbol, row.claimable0)}</div>
                             <div className="">{row.token0?.symbol}</div>
                             <img
                               className="aspect-square rounded-full w-[14px] h-[14px]"
@@ -516,7 +532,7 @@ export default function EnhancedTable({ rewards, tokenID }) {
                             /> */}
                           </div>
                           <div className="flex flex-row gap-[4px] items-center justify-end text-white text-sm leading-[18px] font-medium">
-                            <div className="">{formatCurrency(row.claimable1)}</div>
+                            <div className="">{formatTokenBalance(row.token1?.symbol, row.claimable1)}</div>
                             <div className="">{row.token1?.symbol}</div>
                             <img
                               className="aspect-square rounded-full w-[14px] h-[14px]"
@@ -584,7 +600,7 @@ export default function EnhancedTable({ rewards, tokenID }) {
                     {row && row.rewardType === 'Fees' && (
                       <div className="flex flex-col gap-1">
                         <div className="flex flex-row gap-[4px] items-center justify-end text-white text-sm leading-[18px] font-medium">
-                          <div className="">{formatCurrency(row.claimable0)}</div>
+                          <div className="">{formatTokenBalance(row.token0?.symbol, row.claimable0)}</div>
                           <div className="">{row.token0?.symbol}</div>
                           <img
                             className="aspect-square rounded-full w-[14px] h-[14px]"
@@ -610,7 +626,7 @@ export default function EnhancedTable({ rewards, tokenID }) {
                           /> */}
                         </div>
                         <div className="flex flex-row gap-[4px] items-center justify-end text-white text-sm leading-[18px] font-medium">
-                          <div className="">{formatCurrency(row.claimable1)}</div>
+                          <div className="">{formatTokenBalance(row.token1?.symbol, row.claimable1)}</div>
                           <div className="">{row.token1?.symbol}</div>
                           <img
                             className="aspect-square rounded-full w-[14px] h-[14px]"

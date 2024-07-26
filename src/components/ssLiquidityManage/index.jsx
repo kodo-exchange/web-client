@@ -1882,7 +1882,7 @@ export default function LiquidityManage() {
                               alt=""
                               width="24"
                               height="24"
-                              className="mr-1 h-[24px] w-[24px]"
+                              className="mr-1 h-[24px] w-[24px] rounded-full"
                               src={pair?.token0?.logoURI}
                               onError={(e) => {
                                 e.target.onerror = null
@@ -1919,7 +1919,7 @@ export default function LiquidityManage() {
                                 alt=""
                                 width="24"
                                 height="24"
-                                className="mr-1 h-[24px] w-[24px]"
+                                className="mr-1 h-[24px] w-[24px] rounded-full"
                                 src={pair?.token1?.logoURI}
                                 onError={(e) => {
                                   e.target.onerror = null

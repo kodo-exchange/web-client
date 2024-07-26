@@ -288,7 +288,7 @@ function AssetSelect({ type, value, assetOptions, onSelect }) {
           </div>
           <div className="flex flex-col gap-1 text-right text-xs sm:text-sm">
             <div className="ml-auto">
-              <p>{asset && asset.balance ? formatCurrency(asset.balance) : '0.00'}</p>
+              <p>{asset && asset.balance ? formatTokenBalance(asset.symbol, asset.balance) : '0.00'}</p>
               <p className="text-[10px] sm:text-sm text-text-gray">Balance</p>
             </div>
           </div>

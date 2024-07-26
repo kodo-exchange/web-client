@@ -13,7 +13,7 @@ import {
   InformationCircleIcon as InformationCircleIconSolid,
 } from '@heroicons/react/24/solid'
 import { InformationCircleIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
-import { formatCurrency, formatAddress } from '../../utils'
+import { formatCurrency, formatAddress, formatTokenBalance } from '../../utils'
 import { ETHERSCAN_URL, CONTRACTS } from '../../stores/constants'
 
 import { Tooltip } from 'react-tooltip'
@@ -925,7 +925,10 @@ export default function EnhancedTable({ pairs, account }) {
                                 <div className="flex flex-row gap-1 justify-end text-text-gray text-[10px] leading-[13px] font-normal mb-[2px]">
                                   <div className="">
                                     {row?.balance && row?.totalSupply && row?.reserve0
-                                      ? formatCurrency(BigNumber(row.balance).div(row.totalSupply).times(row.reserve0))
+                                      ? formatTokenBalance(
+                                          row?.token0?.symbol,
+                                          BigNumber(row.balance).div(row.totalSupply).times(row.reserve0)
+                                        )
                                       : '0.00'}
                                   </div>
                                   <div className="">{row?.token0?.symbol ?? ''}</div>
@@ -933,7 +936,10 @@ export default function EnhancedTable({ pairs, account }) {
                                 <div className="flex flex-row gap-1 justify-end text-text-gray text-[10px] leading-[13px] font-normal mb-[2px]">
                                   <div className="">
                                     {row?.balance && row?.totalSupply && row?.reserve1
-                                      ? formatCurrency(BigNumber(row.balance).div(row.totalSupply).times(row.reserve1))
+                                      ? formatTokenBalance(
+                                          row?.token1?.symbol,
+                                          BigNumber(row.balance).div(row.totalSupply).times(row.reserve1)
+                                        )
                                       : '0.00'}
                                   </div>
                                   <div className="">{row?.token1?.symbol ?? ''}</div>
@@ -957,7 +963,8 @@ export default function EnhancedTable({ pairs, account }) {
                                 <div className="flex flex-row gap-1 justify-end text-text-gray text-[10px] leading-[13px] font-normal mb-[2px]">
                                   <div className="">
                                     {row?.gauge?.balance && row?.gauge?.totalSupply && row?.gauge?.reserve0
-                                      ? formatCurrency(
+                                      ? formatTokenBalance(
+                                          row?.token0?.symbol,
                                           BigNumber(row.gauge.balance)
                                             .div(row.gauge.totalSupply)
                                             .times(row.gauge.reserve0)
@@ -969,7 +976,8 @@ export default function EnhancedTable({ pairs, account }) {
                                 <div className="flex flex-row gap-1 justify-end text-text-gray text-[10px] leading-[13px] font-normal mb-[2px]">
                                   <div className="">
                                     {row?.gauge?.balance && row?.gauge?.totalSupply && row?.gauge?.reserve1
-                                      ? formatCurrency(
+                                      ? formatTokenBalance(
+                                          row?.token1?.symbol,
                                           BigNumber(row.gauge.balance)
                                             .div(row.gauge.totalSupply)
                                             .times(row.gauge.reserve1)

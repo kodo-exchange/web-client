@@ -198,7 +198,7 @@ export default function VestNFT({ nft, govToken, baseAssets }) {
             </div>
           </div>
           <div className="flex flex-col text-sm gap-[6px] bg-table-dark border border-border p-4 rounded-xl mt-4">
-            <div className="text-text-gray text-xs">Locked KODO Value</div>
+            <div className="text-text-gray text-xs">Locked KODO Value ≈</div>
             <div className="flex flex-row justify-between items-center">
               <div className="flex flex-row items-center gap-[6px]">
                 <img
@@ -227,7 +227,7 @@ export default function VestNFT({ nft, govToken, baseAssets }) {
                 />
                 <div className="text-text-gray text-xs">ETH</div>
               </div>
-              <div className="text-white text-xs">{`${calculateEthTokenValue(nft)}`}</div>
+              <div className="text-white text-xs">{`Ξ${calculateEthTokenValue(nft)}`}</div>
             </div>
           </div>
           <div className="flex flex-row justify-between gap-4 mt-[9px]">

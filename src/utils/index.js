@@ -47,8 +47,14 @@ export function formatCurrency(amount, decimals = 2, largeNumberFormat = false) 
 }
 
 export function formatTokenBalance(token, balance) {
+  const bnAmount = BigNumber(balance)
+
+  if (bnAmount.isNaN()) {
+    return '0.00'
+  }
+
   const decimals = TOKEN_DISPLAY_DECIMALS[token]
-  if (decimals !== undefined) {
+  if (decimals !== undefined && bnAmount.gt(0)) {
     return formatCurrency(balance, decimals)
   }
   return formatCurrency(balance)
