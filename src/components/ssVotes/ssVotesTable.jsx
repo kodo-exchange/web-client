@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import BigNumber from 'bignumber.js'
 
-import { formatCurrency, formatAddress } from '../../utils'
+import { formatCurrency, formatAddress, formatTokenBalance } from '../../utils'
 
 import { MagnifyingGlassIcon, ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/24/solid'
 import { InformationCircleIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
@@ -705,7 +705,9 @@ export default function EnhancedTable({ gauges, setParentSliderValues, defaultVo
                                     return (
                                       <div key={idx} className="flex flex-col gap-1">
                                         <div className="flex flex-row gap-[4px] items-center justify-end text-white text-sm leading-[18px] font-medium">
-                                          <div className="">{formatCurrency(bribe.rewardAmount)}</div>
+                                          <div className="">
+                                            {formatTokenBalance(bribe.token.symbol, bribe.rewardAmount)}
+                                          </div>
                                           <div className="">{bribe.token.symbol}</div>
                                           <img
                                             className="aspect-square rounded-full"
