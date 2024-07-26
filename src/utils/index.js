@@ -1,4 +1,5 @@
 import BigNumber from 'bignumber.js'
+import { TOKEN_DISPLAY_DECIMALS } from '../stores/constants/index.js'
 
 /**
  * Formats a number as a currency string.
@@ -20,6 +21,10 @@ export function formatCurrency(amount, decimals = 2, largeNumberFormat = false) 
       return '< 0.0001'
     }
 
+    if (decimals === 5 && bnAmount.gt(0) && bnAmount.lt(0.00001)) {
+      return '< 0.00001'
+    }
+
     if (largeNumberFormat) {
       if (bnAmount.gte(1e9)) {
         return bnAmount.div(1e9).toFixed(decimals) + 'B'
@@ -39,6 +44,14 @@ export function formatCurrency(amount, decimals = 2, largeNumberFormat = false) 
   } else {
     return 0
   }
+}
+
+export function formatTokenBalance(token, balance) {
+  const decimals = TOKEN_DISPLAY_DECIMALS[token]
+  if (decimals !== undefined) {
+    return formatCurrency(balance, decimals)
+  }
+  return formatCurrency(balance)
 }
 
 export function formatAddress(address, length = 'short') {

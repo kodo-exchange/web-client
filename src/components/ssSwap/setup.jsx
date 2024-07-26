@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react'
 
 import { withTheme } from '@material-ui/core/styles'
 
-import { formatCurrency, formatAddress } from '../../utils'
+import { formatCurrency, formatAddress, formatTokenBalance } from '../../utils'
 
 import stores from '../../stores'
 import { ACTIONS, ETHERSCAN_URL, TOP_ASSETS, CONTRACTS } from '../../stores/constants'
@@ -852,10 +852,12 @@ function Setup() {
             <div className="flex items-center">
               <span>
                 {isFromPerToRate
-                  ? `1 ${fromAssetValue?.symbol} = ${formatCurrency(
+                  ? `1 ${fromAssetValue?.symbol} = ${formatTokenBalance(
+                      toAssetValue?.symbol,
                       BigNumber(quote.output.finalValue).div(quote.inputs.fromAmount).toFixed(18)
                     )} ${toAssetValue?.symbol}`
-                  : `1 ${toAssetValue?.symbol} = ${formatCurrency(
+                  : `1 ${toAssetValue?.symbol} = ${formatTokenBalance(
+                      fromAssetValue?.symbol,
                       BigNumber(quote.inputs.fromAmount).div(quote.output.finalValue).toFixed(18)
                     )} ${fromAssetValue?.symbol}`}
               </span>
@@ -886,7 +888,8 @@ function Setup() {
               </span>
             </div>
             <div className="flex items-center">
-              {`${formatCurrency(
+              {`${formatTokenBalance(
+                toAssetValue?.symbol,
                 BigNumber(quote.output.finalValue)
                   .times(1 - slippage / 100)
                   .toFixed(18)
@@ -1112,7 +1115,9 @@ function Setup() {
                 }}
               >
                 <span className="text-text-gray">{'Balance:'}</span>
-                <span className="font-semibold text-text-gray">{' ' + formatCurrency(assetValue.balance)}</span>
+                <span className="font-semibold text-text-gray">
+                  {' ' + formatTokenBalance(assetValue.symbol, assetValue.balance)}
+                </span>
               </div>
             )}
           </div>
