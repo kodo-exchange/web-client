@@ -17,3 +17,10 @@ export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 export const FALLBACK_RPC = process.env.NEXT_PUBLIC_CHAIN_RPC
 
 export const TOP_ASSETS = ['WETH', 'TAIKO', 'KODO', 'USDC', 'USDC.e', 'LRC']
+
+export const TOKEN_DISPLAY_DECIMALS = {
+  ETH: 5,
+  WETH: 5,
+  rETH: 5,
+  wstETH: 5,
+}
