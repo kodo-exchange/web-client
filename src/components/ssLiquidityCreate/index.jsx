@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 // import { Typography, MenuItem, Select } from '@material-ui/core'
 import BigNumber from 'bignumber.js'
-import { formatCurrency, formatAddress } from '../../utils'
+import { formatCurrency, formatAddress, formatTokenBalance } from '../../utils'
 // import classes from './ssLiquidityCreate.module.css'
 
 import stores from '../../stores'
@@ -259,7 +259,7 @@ function AssetSelect({ type, value, assetOptions, onSelect }) {
           </div>
           <div className="flex flex-col gap-1 text-right text-xs sm:text-sm">
             <div className="ml-auto">
-              <p>{asset && asset.balance ? formatCurrency(asset.balance) : '0.00'}</p>
+              <p>{asset && asset.balance ? formatTokenBalance(asset.symbol, asset.balance) : '0.00'}</p>
               <p className="text-[10px] sm:text-sm text-text-gray">Balance</p>
             </div>
           </div>

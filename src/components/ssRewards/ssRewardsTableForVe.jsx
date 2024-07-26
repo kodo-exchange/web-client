@@ -5,7 +5,7 @@ import React from 'react'
 // import { useRouter } from 'next/router'
 import BigNumber from 'bignumber.js'
 
-import { formatCurrency } from '../../utils'
+import { formatCurrency, formatTokenBalance } from '../../utils'
 import stores from '../../stores'
 import { ACTIONS } from '../../stores/constants'
 // import Image from 'next/image'
@@ -449,7 +449,7 @@ export default function EnhancedTable({ rewards, tokenID }) {
                               key={index}
                               className="flex flex-row gap-[4px] items-center justify-end text-white text-sm leading-[18px] font-medium"
                             >
-                              <div className="">{formatCurrency(bribe.earned)}</div>
+                              <div className="">{formatTokenBalance(bribe.token?.symbol, bribe.earned)}</div>
                               <div className="">{bribe.token?.symbol}</div>
                               <img
                                 className="rounded-full w-[14px] h-[14px]"

@@ -227,7 +227,7 @@ export default function VestNFT({ nft, govToken, baseAssets }) {
                 />
                 <div className="text-text-gray text-xs">ETH</div>
               </div>
-              <div className="text-white text-xs">{`${calculateEthTokenValue(nft)}`}</div>
+              <div className="text-white text-xs">{`Ξ${calculateEthTokenValue(nft)}`}</div>
             </div>
           </div>
           <div className="flex flex-row justify-between gap-4 mt-[9px]">
