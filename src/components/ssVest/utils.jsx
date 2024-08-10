@@ -94,7 +94,19 @@ export default function Utils({ nft, vestNFTs, updateLockDuration }) {
       <div className="p-6 pt-0 mt-8 mb-4">
         <div className="mb-8 text-xl">Useful utilities for your NFT</div>
         <div className="flex justify-between items-center">
-          <div className="text-text-gray">Reset your NFT</div>
+          <div className="text-text-gray flex items-center">
+            Reset your NFT
+            <span className="text-base font-medium">
+              <Tooltip id="reset-tooltip" className="max-w-md whitespace-normal" />
+              <a
+                data-tooltip-id="reset-tooltip"
+                data-tooltip-place="right"
+                data-tooltip-content={`Before you withdraw, transfer or merge your NFT, if it has already voted, you need to reset it.`}
+              >
+                <InformationCircleIcon className="self-center shrink-0 mx-1 h-4 w-4 text-text-gray" />
+              </a>
+            </span>
+          </div>
           <button
             className="inline-flex items-center justify-center text-sm font-medium transition-colors duration-300 disabled:bg-bg-disable disabled:text-text-disabled disabled:pointer-events-none bg-pink-primary hover:bg-pink-primary/90 text-white h-10 py-2 px-4 rounded-[10px] min-w-[100px]"
             disabled={resetLoading}
@@ -105,7 +117,20 @@ export default function Utils({ nft, vestNFTs, updateLockDuration }) {
         </div>
         <div data-orientation="horizontal" role="none" className="shrink-0 bg-border h-[1px] w-full my-4"></div>
         <div className="flex justify-between items-center">
-          <div className="text-text-gray">Poke your NFT</div>
+          {/* <div className="text-text-gray">Poke your NFT</div> */}
+          <div className="text-text-gray flex items-center">
+            Poke your NFT
+            <span className="text-base font-medium">
+              <Tooltip id="poke-tooltip" className="max-w-md whitespace-normal" />
+              <a
+                data-tooltip-id="poke-tooltip"
+                data-tooltip-place="right"
+                data-tooltip-content={`After adding KODO or merging veKODO into your lock, you can use poke to update your voting snapshot, maintaining the exact same proportions as before. It's not limited to once per epoch.`}
+              >
+                <InformationCircleIcon className="self-center shrink-0 mx-1 h-4 w-4 text-text-gray" />
+              </a>
+            </span>
+          </div>
           <button
             className="inline-flex items-center justify-center text-sm font-medium transition-colors duration-300 disabled:bg-bg-disable disabled:text-text-disabled disabled:pointer-events-none bg-pink-primary hover:bg-pink-primary/90 text-white h-10 py-2 px-4 rounded-[10px] min-w-[100px]"
             disabled={pokeLoading}
@@ -122,7 +147,7 @@ export default function Utils({ nft, vestNFTs, updateLockDuration }) {
               <Tooltip id="withdraw-tooltip" className="max-w-md whitespace-normal" />
               <a
                 data-tooltip-id="withdraw-tooltip"
-                data-tooltip-place="top-right"
+                data-tooltip-place="right"
                 data-tooltip-content={`If you've voted with this veNFT, please reset it first.`}
               >
                 <InformationCircleIcon className="self-center shrink-0 mx-1 h-4 w-4 text-text-gray" />
