@@ -221,22 +221,11 @@ class Store {
 
     if (web3context && web3context.chainId === parseInt(process.env.NEXT_PUBLIC_CHAINID, 16)) {
       provider = web3context.library.provider
-      // Use user's wallet provider but replace the RPC URL with your own
-      const originalProvider = web3context.library.provider
-      const customProvider = new Web3.providers.HttpProvider(process.env.NEXT_PUBLIC_CHAIN_RPC)
-
-      // Create a proxy provider that uses the original provider for signing and custom provider for RPC
-      provider = new Proxy(customProvider, {
-        get: (target, prop, receiver) => {
-          if (prop === 'send' || prop === 'sendAsync') {
-            return originalProvider[prop].bind(originalProvider)
-          }
-          return Reflect.get(target, prop, receiver)
-        },
-      })
     } else {
       provider = new Web3.providers.HttpProvider(process.env.NEXT_PUBLIC_CHAIN_RPC)
     }
+
+    // provider = new Web3.providers.HttpProvider(process.env.NEXT_PUBLIC_CHAIN_RPC)
 
     if (!provider) {
       return null

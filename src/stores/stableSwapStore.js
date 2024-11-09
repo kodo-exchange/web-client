@@ -6591,29 +6591,57 @@ class Store {
             }
           })
           .on('error', function (error) {
+            // if (!error.toString().includes('-32601')) {
+            //   if (error.message) {
+            //     context.emitter.emit(ACTIONS.TX_REJECTED, {
+            //       uuid,
+            //       error: error.message,
+            //     })
+            //     return callback(error.message)
+            //   }
+            //   context.emitter.emit(ACTIONS.TX_REJECTED, { uuid, error })
+            //   callback(error)
+            // }
+            console.error('Transaction error:', error)
+            const detailedError = {
+              message: error.message,
+              stack: error.stack,
+              name: error.name,
+              ...error,
+            }
             if (!error.toString().includes('-32601')) {
-              if (error.message) {
-                context.emitter.emit(ACTIONS.TX_REJECTED, {
-                  uuid,
-                  error: error.message,
-                })
-                return callback(error.message)
-              }
-              context.emitter.emit(ACTIONS.TX_REJECTED, { uuid, error })
-              callback(error)
+              context.emitter.emit(ACTIONS.TX_REJECTED, {
+                uuid,
+                error: detailedError,
+              })
+              callback(detailedError)
             }
           })
           .catch((error) => {
+            // if (!error.toString().includes('-32601')) {
+            //   if (error.message) {
+            //     context.emitter.emit(ACTIONS.TX_REJECTED, {
+            //       uuid,
+            //       error: error.message,
+            //     })
+            //     return callback(error.message)
+            //   }
+            //   context.emitter.emit(ACTIONS.TX_REJECTED, { uuid, error })
+            //   callback(error)
+            // }
+            console.error('Transaction catch error:', error)
+            const detailedError = {
+              message: error.message,
+              stack: error.stack,
+              name: error.name,
+              ...error,
+            }
             if (!error.toString().includes('-32601')) {
-              if (error.message) {
-                context.emitter.emit(ACTIONS.TX_REJECTED, {
-                  uuid,
-                  error: error.message,
-                })
-                return callback(error.message)
-              }
-              context.emitter.emit(ACTIONS.TX_REJECTED, { uuid, error })
-              callback(error)
+              context.emitter.emit(ACTIONS.TX_REJECTED, {
+                uuid,
+                error: detailedError,
+              })
+              callback(detailedError)
             }
           })
       })
