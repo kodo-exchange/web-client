@@ -219,11 +219,13 @@ class Store {
     let web3context = this.getStore('web3context')
     let provider = null
 
-    if (web3context && web3context.chainId === parseInt(process.env.NEXT_PUBLIC_CHAINID, 16)) {
-      provider = web3context.library.provider
-    } else {
-      provider = new Web3.providers.HttpProvider(process.env.NEXT_PUBLIC_CHAIN_RPC)
-    }
+    // if (web3context && web3context.chainId === parseInt(process.env.NEXT_PUBLIC_CHAINID, 16)) {
+    //   provider = web3context.library.provider
+    // } else {
+    //   provider = new Web3.providers.HttpProvider(process.env.NEXT_PUBLIC_CHAIN_RPC)
+    // }
+
+    provider = new Web3.providers.HttpProvider(process.env.NEXT_PUBLIC_CHAIN_RPC)
 
     if (!provider) {
       return null
