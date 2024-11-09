@@ -6609,12 +6609,13 @@ class Store {
               name: error.name,
               ...error,
             }
+            const errorString = JSON.stringify(detailedError, null, 2)
             if (!error.toString().includes('-32601')) {
               context.emitter.emit(ACTIONS.TX_REJECTED, {
                 uuid,
-                error: detailedError,
+                error: errorString,
               })
-              callback(detailedError)
+              callback(errorString)
             }
           })
           .catch((error) => {
@@ -6636,12 +6637,13 @@ class Store {
               name: error.name,
               ...error,
             }
+            const errorString = JSON.stringify(detailedError, null, 2)
             if (!error.toString().includes('-32601')) {
               context.emitter.emit(ACTIONS.TX_REJECTED, {
                 uuid,
-                error: detailedError,
+                error: errorString,
               })
-              callback(detailedError)
+              callback(errorString)
             }
           })
       })
